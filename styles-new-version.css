@@ -1,0 +1,140 @@
+/* styles.css */
+:root {
+    --primary-color: #4a4a9a;
+    --secondary-color: #6c63ff;
+    --accent-color: #ff6b6b;
+    --background-color: #f7f7ff;
+    --text-color: #333;
+    --card-background: #ffffff;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: var(--background-color);
+}
+
+h1, h2 {
+    color: var(--primary-color);
+    text-align: center;
+    padding-bottom: 10px;
+    font-weight: 600;
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+}
+
+h2 {
+    font-size: 2em;
+    margin-top: 40px;
+}
+
+.section {
+    background-color: var(--card-background);
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.section:hover {
+    transform: translateY(-5px);
+}
+
+.section h3 {
+    color: var(--secondary-color);
+    margin-top: 0;
+    font-size: 1.5em;
+    border-bottom: 2px solid var(--secondary-color);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.heart, .star, .flower, .globe {
+    font-size: 1.2em;
+}
+
+a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--accent-color);
+    text-decoration: underline;
+}
+
+ul {
+    padding-left: 20px;
+}
+
+.action-button, .video-btn, .swiss-tips-btn {
+    background-color: var(--secondary-color);
+    border: none;
+    color: white;
+    padding: 12px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    font-size: 16px;
+    margin: 8px 4px;
+    cursor: pointer;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.action-button:hover, .video-btn:hover, .swiss-tips-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.action-button svg, .video-btn svg {
+    margin-right: 8px;
+}
+
+#mapBtn {
+    background-color: #3a5f9a;
+}
+
+#youtubeBtn {
+    background-color: #FF0000;
+}
+
+#sheetBtn {
+    background-color: #0F9D58;
+}
+
+.video-btn {
+    background-color: #FF0000;
+}
+
+.swiss-tips-btn {
+    background-color: #3f17f0;
+}
+
+.subsection {
+    margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    .section {
+        padding: 15px;
+    }
+    .action-button, .video-btn, .swiss-tips-btn {
+        width: 100%;
+        margin: 8px 0;
+    }
+}

@@ -1,0 +1,142 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f0f8ff;
+}
+h1, h2 {
+    color: #4a4a4a;
+    text-align: center;
+    border-bottom: 2px solid #4a4a4a;
+    padding-bottom: 10px;
+}
+.section {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.section h3 {
+    color: #3a5f9a;
+    margin-top: 0;
+}
+.heart {
+    color: #ff69b4;
+}
+.star {
+    color: #ffd700;
+}
+a {
+    color: #0066cc;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+ul {
+    padding-left: 20px;
+}
+.action-button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+.action-button:hover {
+    background-color: #45a049;
+}
+.action-button:active {
+    background-color: #3e8e41;
+}
+.action-button svg {
+    margin-right: 8px;
+}
+#mapBtn {
+    background-color: #3a5f9a;
+}
+#mapBtn:hover {
+    background-color: #2e4c7a;
+}
+#mapBtn:active {
+    background-color: #254066;
+}
+#youtubeBtn {
+    background-color: #FF0000;
+}
+#youtubeBtn:hover {
+    background-color: #CC0000;
+}
+#youtubeBtn:active {
+    background-color: #990000;
+}
+#sheetBtn {
+    background-color: #0F9D58;
+}
+#sheetBtn:hover {
+    background-color: #0B8043;
+}
+#sheetBtn:active {
+    background-color: #07632F;
+}
+.video-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.video-btn svg {
+    margin-right: 8px;
+}
+
+.youtube-btn {
+    background-color: #f2f2f2;
+    color: #333333;
+    border: 1px solid #d3d3d3;
+}
+
+.youtube-btn:hover {
+    background-color: #e6e6e6;
+}
+
+.youtube-btn svg {
+    fill: #FF0000;
+}
+
+.swiss-tips-btn {
+    background-color: #3f17f0;  /* Swiss flag red */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+.swiss-tips-btn:hover {
+    background-color: #3f3fa9;
+}
+.subsection {
+    margin-bottom: 15px;
+}
