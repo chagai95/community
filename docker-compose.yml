@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  stayinginbern:
+    build: .
+    container_name: stayinginbern
+    ports:
+      - "8888:80"
+    restart: always
+    volumes:
+      - /matrix/static-files/public/community:/usr/share/nginx/html:ro
