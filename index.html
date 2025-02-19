@@ -4,13 +4,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Staying in Bern</title>
+    <style>
+        /* Responsive title styles with more aggressive scaling */
+        .title-container {
+            text-align: center;
+            padding: 0.5rem;
+        }
+
+        .main-title {
+            font-size: 2rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .subtitle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            white-space: nowrap;
+            font-size: 1.8rem;
+            gap: 0.5rem;
+        }
+
+        /* Smaller screens */
+        @media screen and (max-width: 360px) {
+            .main-title {
+                font-size: 1.1rem;
+            }
+            .subtitle {
+                font-size: 0.9rem;
+                gap: 0.2rem;
+            }
+        }
+
+        /* Medium-small screens */
+        @media screen and (min-width: 361px) and (max-width: 480px) {
+            .main-title {
+                font-size: 1.3rem;
+            }
+            .subtitle {
+                font-size: 1.1rem;
+                gap: 0.3rem;
+            }
+        }
+
+        /* Tablet screens */
+        @media screen and (min-width: 481px) and (max-width: 768px) {
+            .main-title {
+                font-size: 1.6rem;
+            }
+            .subtitle {
+                font-size: 1.4rem;
+            }
+        }
+
+        /* Default styles above 768px are set in the main classes */
+    </style>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌹</text></svg>">
 </head>
 <body>
-    <h1>
-        <span class="star">🌟</span> Our Community <span class="star">🌟</span>
-    </h1>
+    <div class="title-container">
+        <h1 class="main-title">Staying in Bern</h1>
+        <div class="subtitle">
+            <span class="star">🌟</span>
+            Free Community Hostel
+            <span class="star">🌟</span>
+        </div>
+    </div>
     
     <div class="section">
         <h3>Important Information</h3>
