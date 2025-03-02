@@ -109,7 +109,7 @@
                 </button>
             </li>
             <li>
-                Brunnmattstrasse 67, 3007 Bern 
+                Gutenbergstrasse 27, 3011 Bern 
                 <br>
                 <button id="copyAddressBtn" class="action-button">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white">
@@ -117,7 +117,7 @@
                     </svg>
                     Copy address
                 </button>
-                <button id="mapBtn" class="action-button" onclick="window.open('https://maps.app.goo.gl/DmxTnZ68WiQ3QeWY7', '_blank')">
+                <button id="mapBtn" class="action-button" onclick="window.open('https://maps.app.goo.gl/r66vj3mfverCYJV26', '_blank')">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white">
                         <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
                     </svg>
@@ -280,7 +280,7 @@
 
     <script>
         document.getElementById('copyAddressBtn').addEventListener('click', function() {
-            var address = "Brunnmattstrasse 67, 3007 Bern";
+            var address = "Gutenbergstrasse 27, 3011 Bern";
             navigator.clipboard.writeText(address).then(function() {
                 var btn = document.getElementById('copyAddressBtn');
                 btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg>Address Copied!';
