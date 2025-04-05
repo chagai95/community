@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ベルンでの滞在 - 無料コミュニティホステル</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', 'Meiryo', 'MS PGothic', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        
+        /* Responsive title styles */
+        .title-container {
+            text-align: center;
+            padding: 0.5rem;
+            margin-bottom: 30px;
+        }
+
+        .main-title {
+            font-size: 2rem;
+            margin-bottom: 0.3rem;
+            color: #2c3e50;
+        }
+
+        .subtitle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            white-space: nowrap;
+            font-size: 1.8rem;
+            gap: 0.5rem;
+        }
+        
+        /* Smaller screens */
+        @media screen and (max-width: 360px) {
+            .main-title {
+                font-size: 1.1rem;
+            }
+            .subtitle {
+                font-size: 0.9rem;
+                gap: 0.2rem;
+            }
+        }
+
+        /* Medium-small screens */
+        @media screen and (min-width: 361px) and (max-width: 480px) {
+            .main-title {
+                font-size: 1.3rem;
+            }
+            .subtitle {
+                font-size: 1.1rem;
+                gap: 0.3rem;
+            }
+        }
+
+        /* Tablet screens */
+        @media screen and (min-width: 481px) and (max-width: 768px) {
+            .main-title {
+                font-size: 1.6rem;
+            }
+            .subtitle {
+                font-size: 1.4rem;
+            }
+        }
+        
+        h2 {
+            text-align: center;
+            margin: 30px 0 15px;
+            color: #3498db;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #3498db;
+        }
+        
+        h3 {
+            color: #2c3e50;
+            margin-top: 20px;
+        }
+        
+        .section {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .important {
+            background-color: #ffe6e6;
+            border-left: 5px solid #ff6b6b;
+        }
+        
+        .highlight {
+            font-weight: bold;
+            color: #e74c3c;
+        }
+        
+        .warning {
+            background-color: #FFF3CD;
+            border-left: 5px solid #FFC107;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        .note {
+            font-style: italic;
+            background-color: #ecf0f1;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+        
+        ul {
+            padding-left: 20px;
+        }
+        
+        .star, .heart, .globe {
+            display: inline-block;
+        }
+        
+        /* Button styles */
+        .action-button, .video-btn, .swiss-tips-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: #4CAF50;
+            color: white;
+            padding: 8px 15px;
+            margin: 5px 0;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+            text-decoration: none;
+        }
+        
+        .action-button svg, .video-btn svg {
+            margin-right: 5px;
+        }
+        
+        .action-button:hover, .video-btn:hover {
+            background-color: #45a049;
+        }
+        
+        .youtube-btn {
+            background-color: #FF0000;
+        }
+        
+        .youtube-btn:hover {
+            background-color: #cc0000;
+        }
+        
+        .swiss-tips-btn {
+            background-color: #e74c3c;
+            display: block;
+            margin: 15px auto;
+            font-size: 18px;
+            padding: 12px 20px;
+        }
+        
+        .swiss-tips-btn:hover {
+            background-color: #c0392b;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            font-size: 0.9em;
+            color: #7f8c8d;
+        }
+        
+        .subsection {
+            margin-left: 20px;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+        }
+        
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌹</text></svg>">
+</head>
+<body>
+    <div class="title-container">
+        <h1 class="main-title">ベルンでの滞在</h1>
+        <div class="subtitle">
+            <span class="star">🌟</span>
+            無料コミュニティホステル
+            <span class="star">🌟</span>
+        </div>
+    </div>
+    
+    <div class="section important">
+        <h3>⚠️ 重要 - 来訪前にお読みください ⚠️</h3>
+        <ul>
+            <li>
+                <strong>来訪前にこの動画をご覧ください：</strong>
+                <br>
+                <button class="action-button youtube-btn" onclick="window.open('https://stayinginbern.ch/knock-knock', '_blank')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white">
+                        <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+                    </svg>
+                    入り方について
+                </button>
+            </li>
+            <li>
+                <strong>正確な住所を確認してください：</strong>
+                <br>
+                Airbnbに記載されている住所は正確でない場合があります。常に当ウェブサイトで最新の住所を確認してください：
+                <br>
+                <button class="action-button" onclick="window.open('https://stayinginbern.ch/', '_blank')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white">
+                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                    </svg>
+                    公式ウェブサイト
+                </button>
+            </li>
+            <li>
+                <strong>到着時間：</strong> 特別に許可を求め、それが承認されない限り、午後8時以降に到着しないでください。
+            </li>
+            <li class="highlight">
+                深夜（午前3時など）に到着してベルを鳴らしても、宿泊をお受けすることができません。その場合はホテルをご利用ください。
+            </li>
+        </ul>
+    </div>
+    
+    <div class="section">
+        <h3>重要な情報</h3>
+        <ul>
+            <li>ドアベルを気軽に鳴らしてください！ 🔔 </li>
+            <li>
+                誰も応答しない場合は、キーボックスを使用できます 🔑
+                <br>
+                <button class="action-button youtube-btn" onclick="window.open('https://youtu.be/nGrdOKK1NDI', '_blank')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white">
+                        <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+                    </svg>
+                    キーボックスガイド
+                </button>
+                <br>
+                （パスワードはグループでお尋ねください）
+            </li>
+            <li>
+                まず空きがあるか確認し、その後あなたの名前を追加してください 🖊️📜
+                <br>
+                <button class="action-button" onclick="window.open('https://tiny.cc/sleepingplan', '_blank')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white">
+                        <path d="M19 3H5c-1.1 0-1.99.9-1.99 2L3 19c0 1.1.89 2 1.99 2H19c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 12h-4c0 1.66-1.34 3-3 3s-3-1.34-3-3H5V5h14v10z"/>
+                    </svg>
+                    宿泊プラン
+                </button>
+            </li>
+            <li>
+                読むのが苦手な方は、その他のガイドをご覧ください 🤓📖
+                <br>
+                <button class="action-button" onclick="window.open('https://www.youtube.com/playlist?list=PLgL5d4DmTBmQpUsIYMUuy01c2SK7_6sF6', '_blank')" style="background-color: #3498DB;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white" style="margin-right: 8px;">
+                        <path d="M15 6H3v2h12V6zm0 4H3v2h12v-2zM3 16h8v-2H3v2zM17 6v8.18c-.31-.11-.65-.18-1-.18-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3V8h3V6h-5z"/>
+                    </svg>
+                    その他の動画
+                </button>
+            </li>
+            <li>
+                Gutenbergstrasse 27, 3011 Bern 
+                <br>
+                <button id="copyAddressBtn" class="action-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white">
+                        <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
+                    </svg>
+                    住所をコピー
+                </button>
+                <button class="action-button" onclick="window.open('https://maps.app.goo.gl/r66vj3mfverCYJV26', '_blank')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white">
+                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                    </svg>
+                    Googleマップで見る
+                </button>
+            </li>
+        </ul>
+    </div>
+    
+    <div class="section">
+        <h3>この場所について</h3>
+        <p>私たちは文化交流の力を体験したいすべての人のための無料コミュニティホステルです。この小さな場所にどのように全員が収まるかを見ていただけるよう、動画を共有しています - マットレスがあちこちに置かれています 🤣</p>
+        
+        <div class="warning">
+            <p><strong>重要な注意：</strong> 単に宿泊場所を探しているだけなら、別のAirbnbを探してください。グローバルな多様性の美しさを体験したい場合は、ぜひお越しください 😍</p>
+        </div>
+        
+        <p>これは無料なので、Airbnbで予約する必要はありませんが、誤解がないように来訪前に電話での会話が必要です ✌🏻</p>
+        
+        <h4>スペースについて</h4>
+        <p>多くのソファとマットレスがある大きな部屋が一つあります。時々、利用可能な場合は、より多くの人が寝ることができる別の部屋もあります。</p>
+        <p>多くの人と一つの部屋で寝るのが苦手でもコミュニティを体験したい場合は、いつでも気軽に訪問だけすることもできます。同じ家に滞在しながらも個室を希望する場合は、プロジェクトに何らかの形で貢献できれば可能です（例えば金銭的に、またはタスクを手伝うことで）。部屋の空き状況についてはお気軽にお問い合わせください 😊</p>
+        
+        <button class="video-btn youtube-btn" onclick="window.open('https://youtube.com/shorts/KumR_BZ1Yyg', '_blank')">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white">
+                <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+            </svg>
+            家全体を見る
+        </button>
+        <button class="video-btn youtube-btn" onclick="window.open('https://youtube.com/shorts/_S13BXcANCw', '_blank')">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white">
+                <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+            </svg>
+            別の視点から
+        </button>
+    </div>
+    
+    <h2><span class="star">🏠</span> ハウスエチケット <span class="star">🏠</span></h2>
+    
+    <div class="section">
+        <h3>😌 我が家のように</h3>
+        <p>到着したら、すでに長い間ここに住んでいるかのように感じ、行動してください。最初から、あなたはゲストではなく、グループの一員です！</p>
+        <div class="note">
+            <p>寒いベルンで、ここは暖かい家を見つけることができる場所です。私たちがこの無料の場所を提供しているのは、お互いを支え合うことを信じているからです。</p>
+        </div>
+        <button class="video-btn youtube-btn" onclick="window.open('https://youtu.be/dKRA6Ee2bv0', '_blank')">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white">
+                <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+            </svg>
+            仲間たちの活動
+        </button>
+    </div>
+    
+    <div class="section">
+        <h3>🧩 日常スケジュール 🧩</h3>
+        <p><strong>夕方のチェックイン：</strong> 宿泊場所を確保するには、毎晩8時までに家に到着する必要があります。それまでに到着できない場合は、コミュニティの誰かにあなたの場所を確保してもらうよう手配してください。誰もこれを確認できない場合は、その晩は別の場所に宿泊してください。</p>
+        <p><strong>朝のルーティン：</strong> 私たちは朝早く6時から8時の間に起き、一緒に1〜2時間かけて家を掃除します。ぜひ参加して、共有スペースを清潔で居心地の良い場所に保つためにご協力ください。</p>
+    </div>
+    
+    <div class="section">
+        <h3>🛌 寝具</h3>
+        <ul>
+            <li>到着時に棚から新しいシーツを取ってください。</li>
+            <li>滞在中は同じものを使用してください。</li>
+            <li>使用後は、いつ出発するかに関わらず、青い「汚れもの袋」に入れてください。</li>
+            <li>朝早く出発する場合は、あなたの親しい友人がこれを代わりに行うようにしてください。</li>
+            <li>シーツ/カバーなしでマットレス/枕/毛布/掛け布団を使用しないでください！</li>
+        </ul>
+        <p>シーツの取り付けと取り外しは自分で行う必要があります—これは皆にとって管理しやすくするためです。誰かにやってもらいたい場合は、20フランかチョコレート🍫で手配することもできます 😉</p>
+        <button class="video-btn youtube-btn" onclick="window.open('https://youtu.be/OLnks5gnjsI', '_blank')">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white">
+                <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+            </svg>
+            睡眠ガイド
+        </button>
+    </div>
+    
+    <div class="section">
+        <h3>🤼 共有責任</h3>
+        <p>私たちは皆さんに以下を含む家事に貢献していただくことを期待しています：</p>
+        <ul>
+            <li>食器洗い機の使用、中の清潔なものを整理し、使用済みのものを補充する。</li>
+            <li>キッチンとバスルームの掃除、すべてのエリアで掃除機を使用する。</li>
+            <li>
+                洗濯（洗い、乾かし、たたむ）：
+                <br>
+                <button class="video-btn youtube-btn" onclick="window.open('https://youtu.be/A5p3nI89Lwg', '_blank')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white">
+                        <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+                    </svg>
+                    洗濯ガイド
+                </button>
+            </li>
+            <li>
+                ゴミ出し：
+                <br>
+                <button class="video-btn youtube-btn" onclick="window.open('https://www.youtube.com/watch?v=lHqucqu2jQU', '_blank')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white">
+                        <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+                    </svg>
+                    ゴミ出しガイド
+                </button>
+            </li>
+        </ul>
+        <p><strong>お手伝い：</strong> 2〜3日以上滞在する場合は、家の周りの他のタスクにも貢献してください。お尋ねいただければ、タスクリストを共有します。あなたが好きなことを選んで、あなたが好きな人と一緒にそれを行うことができます 😎</p>
+        <p><strong>グループ：</strong> 3人以上で到着する場合は、たとえ2〜3日の滞在であっても、追加の責任を負ってください。グループをホストするには特別な努力が必要なので、これでバランスを取っていただけると助かります。時間の代わりに経済的に貢献したい場合も、その貢献を本当に感謝します。</p>
+    </div>
+    
+    <div class="section">
+        <h3>🛀 バスルームエチケット</h3>
+        <ul>
+            <li>タオルを部屋に持って行き、バスルームで乾かすために放置しないでください！</li>
+            <li>あなたの髪でなくても、毎回シャワーから髪を取り除いていただけると素晴らしいです。</li>
+        </ul>
+        <button class="video-btn youtube-btn" onclick="window.open('https://youtu.be/zVhJLWfPMYI', '_blank')">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white">
+                <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+            </svg>
+            バスルームガイド
+        </button>
+    </div>
+    
+    <div class="section">
+        <h3>💼 荷物の保管</h3>
+        <ul>
+            <li>荷物は常に地下室に持って行ってください。</li>
+            <li>共有の部屋には日常的に必要なアイテムだけを保管してください。</li>
+        </ul>
+        <button class="video-btn youtube-btn" onclick="window.open('https://youtube.com/shorts/c4OPtn0qek0', '_blank')">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white">
+                <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+            </svg>
+            地下室ガイド
+        </button>
