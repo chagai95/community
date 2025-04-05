@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Call Summary - What We Discuss With Guests</title>
+  <style>
+    :root {
+      --primary-color: #6366f1;
+      --secondary-color: #60a5fa;
+      --accent-color: #f97316;
+      --text-color: #1f2937;
+      --light-bg: #f9fafb;
+      --card-bg: #ffffff;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      background: var(--light-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    header {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+      border-radius: 0 0 30px 30px;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow);
+    }
+    
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .subtitle {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+    
+    .card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s ease;
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .card-title {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--primary-color);
+    }
+    
+    .card-title .emoji {
+      font-size: 1.5rem;
+      margin-right: 0.75rem;
+    }
+    
+    .tag {
+      display: inline-block;
+      background: #fee2e2;
+      color: #ef4444;
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    
+    .tag.fun {
+      background: #dbeafe;
+      color: #3b82f6;
+    }
+    
+    .collapsible {
+      margin-top: 1rem;
+      overflow: hidden;
+    }
+    
+    .collapse-btn {
+      width: 100%;
+      text-align: left;
+      background: linear-gradient(to right, rgba(99, 102, 241, 0.1), transparent);
+      border: none;
+      border-left: 3px solid var(--primary-color);
+      color: var(--primary-color);
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 1rem;
+      font-size: 1rem;
+      border-radius: 8px;
+      margin-bottom: 0.5rem;
+      transition: all 0.2s ease;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    }
+    
+    .collapse-btn:hover {
+      background: linear-gradient(to right, rgba(99, 102, 241, 0.2), transparent);
+      transform: translateX(2px);
+    }
+    
+    .collapse-btn svg {
+      transition: transform 0.3s ease;
+    }
+    
+    .collapse-btn.active svg {
+      transform: rotate(180deg);
+    }
+    
+    .collapse-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.4s ease, opacity 0.3s ease;
+      opacity: 0;
+      border-left: 3px solid transparent;
+      margin-left: 0.5rem;
+    }
+    
+    .collapse-content.show {
+      max-height: 500px;
+      padding-left: 1rem;
+      margin-bottom: 1rem;
+      opacity: 1;
+      border-left: 3px solid var(--secondary-color);
+    }
+    
+    ul {
+      padding-left: 1.5rem;
+      margin: 1rem 0;
+    }
+    
+    li {
+      margin-bottom: 0.5rem;
+    }
+    
+    .highlight {
+      background: linear-gradient(transparent 60%, rgba(99, 102, 241, 0.2) 40%);
+      padding: 0 2px;
+      font-weight: 600;
+    }
+    
+    /* Visual indicators for collapse state */
+    .collapse-indicator {
+      display: inline-flex;
+      width: 24px;
+      height: 24px;
+      background-color: rgba(99, 102, 241, 0.1);
+      border-radius: 50%;
+      align-items: center;
+      justify-content: center;
+      margin-right: 0.5rem;
+    }
+    
+    .btn {
+      display: inline-block;
+      background: var(--accent-color);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      margin-top: 1rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+    
+    .info-box {
+      background-color: rgba(96, 165, 250, 0.1);
+      border-left: 4px solid var(--secondary-color);
+      padding: 1rem;
+      margin: 1rem 0;
+      border-radius: 0 8px 8px 0;
+      display: flex;
+      align-items: flex-start;
+    }
+    
+    .info-box::before {
+      content: "📌";
+      margin-right: 0.75rem;
+      font-size: 1.2rem;
+    }
+    
+    .tips {
+      margin-top: 2rem;
+      font-style: italic;
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+    
+    @media (min-width: 768px) {
+      .card-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+      }
+      
+      .card {
+        flex: 1 1 calc(50% - 0.75rem);
+        margin-bottom: 0;
+      }
+      
+      header {
+        padding: 3rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Call Summary</h1>
+    <p class="subtitle">Topics we discuss with potential guests</p>
+  </header>
+  
+  <div class="container">
+    <div class="card">
+      <div class="card-title"><span class="emoji">⚠️</span> What to Expect</div>
+      <div class="tag">Important</div>
+      <p>Welcome to our unique shared living space! Our home offers a <span class="highlight">challenging but rewarding experience</span> for short-term guests.</p>
+      
+      <div class="collapsible">
+        <button class="collapse-btn">
+          Read more about the experience
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16" style="min-width: 20px;">
+            <path d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4z"/>
+          </svg>
+        </button>
+        <div class="collapse-content">
+          <p>This is not a traditional hostel or hotel experience. <span class="highlight">It's a hard/difficult but fun experience.</span> Don't forget that it's also going to be hard! Adjust your expectations.</p>
+          <ul>
+            <li>Living with many people in a shared space is <strong>very intense</strong></li>
+            <li>You'll need to do the basic requirements of living together with others</li>
+            <li>It's mainly your decision if you can survive such a demanding environment</li>
+          </ul>
+          <p class="info-box">We're being honest about this - it's completely fine if this isn't for everyone! We want you to have the right expectations.</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="card-title"><span class="emoji">🏠</span> Length of Stay</div>
+      <div class="tag">Important</div>
+      <p><span class="highlight">Separate for people who are coming for 1-3 nights</span></p>
+      
+      <ul>
+        <li>2-3 days is what we can offer for sure, unless you are really rude, disrespectful, or discriminatory</li>
+        <li>We would love you to stay longer, and most of the time this is definitely possible (95% chance 😉)</li>
+      </ul>
+      
+      <div class="collapsible">
+        <button class="collapse-btn">
+          About longer stays
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4z"/>
+          </svg>
+        </button>
+        <div class="collapse-content">
+          <p>This way of living together with so many people is very intense, and it's mainly <strong>your decision</strong> if you can survive such a demanding environment for longer than a few days.</p>
+          <p class="info-box">Most people adapt well to our community living style and enjoy staying longer!</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="card-title"><span class="emoji">⏰</span> House Rhythms - May Be Hard For You</div>
+      <div class="tag">Important</div>
+      <p>These are examples of things that might be hard for you, especially if staying longer:</p>
+      
+      <ul>
+        <li>We all shower before 9 pm (Bring your own towel 🚿)</li>
+        <li>We don't arrive after 9 pm (and definitely don't ring the bell after 9)</li>
+        <li>We're in bed at 10 pm 😴🛌🏻</li>
+      </ul>
+      
+      <div class="collapsible">
+        <button class="collapse-btn">
+          Morning routine (required)
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4z"/>
+          </svg>
+        </button>
+        <div class="collapse-content">
+          <ul>
+            <li>We wake up together between 6-8 am</li>
+            <li>We do basic living together tasks (clean, tidy, air out the room, water the plants) for 1-2 hours</li>
+            <li><strong>Don't go and have breakfast when everyone is doing these tasks</strong></li>
+          </ul>
+          <p class="info-box">These aren't optional "contributions" - they're the basic requirements of living together in our space.</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="card-title"><span class="emoji">📱</span> Before You Arrive</div>
+      <div class="tag fun">Required Steps</div>
+      <p>Please complete these steps <span class="highlight">before your arrival</span>:</p>
+      
+      <ul>
+        <li>Send the link <a href="https://stayinginbern.ch/chat-link">https://stayinginbern.ch/chat-link</a></li>
+        <li>Say hi in the group and when you're coming</li>
+        <li>Add your name to the sleeping plan</li>
+        <li>Watch the 1-minute video on how to get into the house - very important to watch and follow!</li>
+      </ul>
+      
+      <div class="collapsible">
+        <button class="collapse-btn">
+          About our groups
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4z"/>
+          </svg>
+        </button>
+        <div class="collapse-content">
+          <p>We have a group for the people who are in the house: <a href="https://tiny.cc/thehousepeople">https://tiny.cc/thehousepeople</a></p>
+          <ul>
+            <li>Please join this group a few days before you arrive</li>
+            <li>When you leave, leave this group and stay in the main group 😍</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="card-title"><span class="emoji">💡</span> Difficult But Important</div>
+      <div class="tag">Please Read</div>
+      <p>This is difficult to hear but we have to say it to everyone because some people need to hear this - don't take it personally:</p>
+      
+      <div class="collapsible">
+        <button class="collapse-btn">
+          About asking questions
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4z"/>
+          </svg>
+        </button>
+        <div class="collapse-content">
+          <p>Don't ask too much.</p>
+          <p>In a hostel there is usually a receptionist that gets paid to answer questions and even they don't have all the time in the world. We don't have that here.</p>
+          <ul>
+            <li>Before asking for an exception, try to offer your help with something so we feel better about making an exception for you 😍</li>
+            <li>Maybe you can ask us about easy tasks that you can do before you arrive 😎</li>
+            <li>Before you don't ask at all, it's better that you do ask, but if you can find the information somewhere else before you ask, that'll be great!</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <a href="https://stayinginbern.ch/chat-link" class="btn">Join Our Chat Group</a>
+    
+    <p class="tips">We're excited to welcome you to our home! These guidelines help us create a positive experience for everyone.</p>
+  </div>
+
+  <script>
+    document.querySelectorAll('.collapse-btn').forEach(button => {
+      button.addEventListener('click', () => {
+        const content = button.nextElementSibling;
+        
+        // Toggle active class on button for styling
+        button.classList.toggle('active');
+        
+        // Toggle show class on content
+        content.classList.toggle('show');
+        
+        // Optional: close other open sections
+        if (content.classList.contains('show')) {
+          document.querySelectorAll('.collapse-content.show').forEach(openContent => {
+            if (openContent !== content) {
+              openContent.classList.remove('show');
+              openContent.previousElementSibling.classList.remove('active');
+            }
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
