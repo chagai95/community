@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pre-Arrival Tasks | Staying in Bern</title>
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3a0ca3;
+            --accent: #f72585;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #4cc9f0;
+            --warning: #f8961e;
+            --easy: #90be6d;
+            --featured: #f94144;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--dark);
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: #f8f9fa;
+            font-size: 1.05rem;
+        }
+        
+        h1, h2, h3 {
+            color: var(--primary);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--primary);
+            padding: 0.5rem 0;
+        }
+        
+        .container {
+            background-color: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 2.5rem;
+            border-radius: 15px;
+        }
+        
+        .intro {
+            background-color: rgba(67, 97, 238, 0.1);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border-left: 5px solid var(--primary);
+        }
+        
+        .task-group {
+            margin: 2.5rem 0;
+            padding: 0;
+        }
+        
+        .task-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary);
+        }
+        
+        .task-header h2 {
+            margin: 0;
+            flex-grow: 1;
+        }
+        
+        .task-emoji {
+            font-size: 2rem;
+            margin-right: 1rem;
+        }
+        
+        .task-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .task-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border-top: 4px solid var(--primary);
+            height: calc(100% - 3rem);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .brainless .task-card {
+            border-top-color: var(--easy);
+        }
+        
+        .project .task-card {
+            border-top-color: var(--featured);
+        }
+        
+        .social .task-card {
+            border-top-color: var(--success);
+        }
+        
+        .task-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .task-card h3 {
+            margin-top: 0;
+            color: var(--primary);
+            font-size: 1.3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 0.5rem;
+        }
+        
+        .brainless .task-card h3 {
+            color: var(--easy);
+        }
+        
+        .project .task-card h3 {
+            color: var(--featured);
+        }
+        
+        .social .task-card h3 {
+            color: var(--success);
+        }
+        
+        .task-description {
+            flex-grow: 1;
+        }
+        
+        .tag {
+            display: inline-block;
+            padding: 0.2rem 0.8rem;
+            background-color: rgba(67, 97, 238, 0.1);
+            color: var(--primary);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+        }
+        
+        .tag.easy {
+            background-color: rgba(144, 190, 109, 0.1);
+            color: var(--easy);
+        }
+        
+        .tag.featured {
+            background-color: rgba(249, 65, 68, 0.1);
+            color: var(--featured);
+        }
+        
+        .quick-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .quick-task {
+            background-color: white;
+            padding: 1rem;
+            border-radius: 10px;
+            border-left: 3px solid var(--easy);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            transition: all 0.2s ease;
+        }
+        
+        .quick-task:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .explanation {
+            background-color: rgba(58, 12, 163, 0.05);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2.5rem 0;
+            border-left: 5px solid var(--secondary);
+        }
+        
+        .explanation h2 {
+            color: var(--secondary);
+            margin-top: 0;
+            border-bottom: 2px solid rgba(58, 12, 163, 0.2);
+            padding-bottom: 0.5rem;
+        }
+        
+        .reasons {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .reason {
+            background-color: white;
+            padding: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .cta {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.1), rgba(76, 201, 240, 0.1));
+            border-radius: 12px;
+            margin-top: 3rem;
+        }
+        
+        .cta h2 {
+            text-align: center;
+            margin-top: 0;
+        }
+        
+        .button {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            background-color: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .button:hover {
+            background-color: var(--secondary);
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(58, 12, 163, 0.3);
+        }
+        
+        .benefits {
+            background-color: rgba(247, 37, 133, 0.1);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-left: 5px solid var(--accent);
+        }
+        
+        .benefits h2 {
+            color: var(--accent);
+            margin-top: 0;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid rgba(247, 37, 133, 0.2);
+        }
+        
+        .benefit-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .benefit {
+            flex: 1 1 200px;
+            background-color: white;
+            padding: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            transition: all 0.2s ease;
+            text-align: center;
+        }
+        
+        .benefit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .emoji {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        
+        @media (max-width: 768px) {
+            .task-cards, .quick-list, .reasons {
+                grid-template-columns: 1fr;
+            }
+            
+            .benefit-list {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Pre-Arrival Tasks</h1>
+        
+        <div class="intro">
+            <p>By completing tasks before you arrive, you'll help our community thrive and enjoy special benefits during your stay. We'll be much more open to making exceptions for you, helping you, and ensuring your stay is enjoyable without daily chores!</p>
+        </div>
+        
+        <div class="benefits">
+            <h2>What You'll Get When You Help</h2>
+            <div class="benefit-list">
+                <div class="benefit">
+                    <span class="emoji">🍲</span>
+                    <p>We'll cook for you</p>
+                </div>
+                <div class="benefit">
+                    <span class="emoji">🧭</span>
+                    <p>Show you around the area</p>
+                </div>
+                <div class="benefit">
+                    <span class="emoji">🛏️</span>
+                    <p>Prepare your bed for you</p>
+                </div>
+                <div class="benefit">
+                    <span class="emoji">⏰</span>
+                    <p>Flexible schedules</p>
+                </div>
+                <div class="benefit">
+                    <span class="emoji">🏖️</span>
+                    <p>Enjoy your stay without chores</p>
+                </div>
+                <div class="benefit">
+                    <span class="emoji">📆</span>
+                    <p>Stay as long as you'd like</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="task-group project">
+            <div class="task-header">
+                <span class="task-emoji">🎬</span>
+                <h2>Project Support Tasks</h2>
+            </div>
+            <div class="task-cards">
+                <div class="task-card">
+                    <h3>Video Editing</h3>
+                    <div class="task-description">
+                        <p>Edit our videos to make them look more fun and engaging for our audience.</p>
+                    </div>
+                    <span class="tag featured">High impact</span>
+                </div>
+                <div class="task-card">
+                    <h3>Video Upload & Processing</h3>
+                    <div class="task-description">
+                        <p>Upload all videos with the same naming convention to trigger automatic transcription.</p>
+                    </div>
+                    <span class="tag featured">Technical</span>
+                </div>
+                <div class="task-card">
+                    <h3>Guest Coordination</h3>
+                    <div class="task-description">
+                        <p>Check the sleeping plan, tag upcoming guests in the group a few days before arrival, and ensure they understand arrival times.</p>
+                    </div>
+                    <span class="tag featured">Community-building</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="task-group brainless">
+            <div class="task-header">
+                <span class="task-emoji">💫</span>
+                <h2>Quick & Simple Tasks</h2>
+            </div>
+            <p>These easy tasks make a big difference and take just minutes:</p>
+            
+            <div class="quick-list">
+                <div class="quick-task">
+                    <p>Leave a 5-star review on Google Maps</p>
+                </div>
+                <div class="quick-task">
+                    <p>Like all our Instagram stories, posts and reels</p>
+                </div>
+                <div class="quick-task">
+                    <p>Like or use fun emojis on messages in all groups</p>
+                </div>
+                <div class="quick-task">
+                    <p>Like our YouTube videos</p>
+                </div>
+                <div class="quick-task">
+                    <p>Share positive experiences with friends</p>
+                </div>
+                <div class="quick-task">
+                    <p>Book an Airbnb on our listings and leave a 5-star review (we'll reimburse you!)</p>
+                </div>
+                <div class="quick-task">
+                    <p>Leave positive feedback on Couchsurfing, Workaway, etc.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="task-group social">
+            <div class="task-header">
+                <span class="task-emoji">😊</span>
+                <h2>During Your Stay</h2>
+            </div>
+            <div class="quick-list">
+                <div class="quick-task">
+                    <p>Smile!</p>
+                </div>
+                <div class="quick-task">
+                    <p>Be positive</p>
+                </div>
+                <div class="quick-task">
+                    <p>Be energetic</p>
+                </div>
+                <div class="quick-task">
+                    <p>Be nice</p>
+                </div>
+                <div class="quick-task">
+                    <p>Be social</p>
+                </div>
+                <div class="quick-task">
+                    <p>Answer the bell and greet people with a smile</p>
+                </div>
+                <div class="quick-task">
+                    <p>Share your food if you have enough</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="explanation">
+            <h2>Why These Tasks Matter</h2>
+            <p>Liking, leaving reviews, and using emojis builds trust in our project when others see it. It pushes the Instagram or Google algorithm and feels good to show appreciation in a public form. It's fun and creates dopamine kicks for our brains to continue this project!</p>
+            
+            <p>If these tasks don't appeal to you, we'd love to understand why so we can better accommodate your preferences. Some common reasons people prefer different tasks:</p>
+            
+            <div class="reasons">
+                <div class="reason">
+                    <p>You avoid social media as a moral standpoint</p>
+                </div>
+                <div class="reason">
+                    <p>You experience anxiety about friends seeing your online activity</p>
+                </div>
+                <div class="reason">
+                    <p>You're uncomfortable promoting something you're not yet 100% connected to</p>
+                </div>
+                <div class="reason">
+                    <p>You generally try to minimize technology use</p>
+                </div>
+                <div class="reason">
+                    <p>You're focused on your own priorities with limited time</p>
+                </div>
+                <div class="reason">
+                    <p>You're experiencing information overload</p>
+                </div>
+            </div>
+            
+            <p style="margin-top: 1.5rem;">If you can't find anything in these tasks that you're comfortable with, that's okay. Please understand it's difficult to run a community like this. We need to prioritize people who help maintain our community in some way, so we don't feel our energy is being drained.</p>
+        </div>
+        
+        <div class="cta">
+            <h2>Looking for More Advanced Tasks?</h2>
+            <p>If you'd prefer more challenging contributions, check out our complete task list:</p>
+            <a href="https://tiny.cc/stayinginberntasks" class="button">View Advanced Tasks</a>
+        </div>
+    </div>
+</body>
+</html>
