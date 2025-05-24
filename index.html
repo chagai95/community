@@ -58,6 +58,69 @@
         }
 
         /* Default styles above 768px are set in the main classes */
+
+        /* Tooltip styles */
+        .info-tooltip {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            font-size: 0.9em;
+            margin-left: 2px;
+            color: #3498db;
+        }
+
+        .tooltip-text {
+            visibility: hidden;
+            opacity: 0;
+            width: 200px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -100px;
+            font-size: 0.85em;
+            transition: opacity 0.3s;
+        }
+
+        .tooltip-text::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #333 transparent transparent transparent;
+        }
+
+        /* Desktop hover */
+        @media (hover: hover) {
+            .info-tooltip:hover .tooltip-text {
+                visibility: visible;
+                opacity: 1;
+            }
+        }
+
+        /* Mobile styles */
+        @media (hover: none) {
+            .tooltip-text.show {
+                visibility: visible;
+                opacity: 1;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .tooltip-text {
+                width: 150px;
+                margin-left: -75px;
+                font-size: 0.8em;
+            }
+        }
     </style>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌹</text></svg>">
@@ -75,19 +138,9 @@
     <div class="section">
         <h3>Important Information</h3>
         <ul>
-            <!-- <li>Give the doorbell a friendly ring! 🔔 </li>
             <li>
-                If no one answers then you can use the key box 🔑
-                <br>
-                <button id="youtubeBtn" class="action-button" onclick="window.open('https://youtu.be/nGrdOKK1NDI', '_blank')">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white">
-                        <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
-                    </svg>
-                    Key box guide
-                </button>
-                <br>
-                (ask for the password in the group)
-            </li> -->
+                <strong>Coordinate your arrival:</strong> Please message the group before coming to ensure someone is available to open the door. There might be situations where no one is present to let you in.
+            </li>
             <li>
                 Check first here if there is enough room and then add your name 🖊️📜
                 <br>
@@ -125,6 +178,12 @@
                 </button>
             </li>
         </ul>
+    </div>
+
+    <div class="section">
+        <h3><span class="heart">🌈</span> Everyone is Welcome</h3>
+        <p>Everyone is welcome here—but if you're part of a group that's often underrepresented in shared spaces, you are <strong style="color: #ff69b4;">especially</strong> welcome. That includes families, couples, locals<span class="info-tooltip" onclick="toggleTooltip(this)">ℹ️<span class="tooltip-text">Yes we host<br> locals as well!</span></span>, younger travelers (under 20), older travelers (over 45), people of color, all women in general, anyone who is not a cis man<span class="info-tooltip" onclick="toggleTooltip(this)">ℹ️<span class="tooltip-text">Someone who does <br> not necessarily <br> need to identify <br> as a man</span></span>, lgbtq+ and anyone who feels lonely 😊.</p>
+        <p>We aim to keep a good balance so that these groups feel comfortable and safe. If you're not part of one of these groups, just check in with us before coming to make sure the mix is right. Thanks for helping us keep the space welcoming for all.</p>
     </div>
     
     <h2><span class="star">🏠</span> House Etiquette <span class="star">🏠</span></h2>
@@ -294,6 +353,21 @@
             });
         });
 
+        // Tooltip toggle for mobile
+        function toggleTooltip(element) {
+            // Only for touch devices
+            if ('ontouchstart' in window) {
+                var tooltip = element.querySelector('.tooltip-text');
+                tooltip.classList.toggle('show');
+                
+                // Hide tooltip after 3 seconds
+                if (tooltip.classList.contains('show')) {
+                    setTimeout(function() {
+                        tooltip.classList.remove('show');
+                    }, 3000);
+                }
+            }
+        }
     </script>
 </body>
 </html>
